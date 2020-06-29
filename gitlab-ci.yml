@@ -1,0 +1,40 @@
+stages:
+  - tests
+  - pages
+
+tests:
+  stage: tests
+  script:
+    - export GO111MODULE=on
+    - git config --global user.name $GITLAB_USER_ID
+    - git config --global user.email $GITLAB_USER_EMAIL
+    - go test -coverprofile=coverage.out -a ./...
+    - go tool cover -func=coverage.out
+  artifacts:
+    untracked: true
+    paths:
+      - coverage.out
+    expire_in: 30 days
+
+pages:
+  stage: pages
+  dependencies:
+    - tests
+  variables:
+    SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
+    COVERAGE_REPORT_HEADER: "Content-type: application/json"
+    COVERAGE_REPORT_DATA: "{\"username\": \"Coverage Reporter\", \"icon_emoji\":\":chart_with_upwards_trend:\", \"text\": \"Current total coverage: {}% \n You can find detailed report here: https://your-url.gitlab.io/your-repo/ \"}"
+  script:
+    - go tool cover -func=coverage.out | grep total | awk '{print substr($3, 1, length($3)-1)}' | xargs -I {} curl -XPOST -H "$COVERAGE_REPORT_HEADER" -d "$COVERAGE_REPORT_DATA" $SLACK_WEBHOOK_URL
+    - go tool cover -html=coverage.out -o=index.html
+    - mkdir public
+    - mv index.html public/
+  artifacts:
+    untracked: true
+    paths:
+      - coverage.out
+      - public
+    expire_in: 30 days
+  only:
+    - master
+
