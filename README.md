@@ -13,13 +13,13 @@ This is a simple example (currently, written in Golang) of how we can send a cod
 
 ## How it looks
 #### Slack message
-![](examples/gitlab_message.jpeg)
+![](examples/gitlab_message.png)
 
 #### GitLab Pages chart
 ![](examples/gitlab_pages.jpeg)
 
 #### .HTML report
-![](examples/gitlab_report.jpeg)
+![](examples/gitlab_report.png)
 
 ## Roadmap
 - [ ] Add example in Python
