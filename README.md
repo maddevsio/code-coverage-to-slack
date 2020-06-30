@@ -13,7 +13,7 @@ This is a simple example (currently, written in Golang) of how we can send a cod
 
 ## How it looks
 #### Slack message
-![](examples/gitlab_message.png)
+![](examples/slack_message.png)
 
 #### GitLab Pages chart
 ![](examples/gitlab_pages.jpeg)
