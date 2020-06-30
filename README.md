@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Developed by Mad Devs](https://maddevs.io/badge-light.svg)](https://maddevs.io)
 
 ## What is it?
-This is a simple example of how we can send a code coverage from GitLab CI/CD to messenger like Slack via webhook, and how to generate detailed Code Coverage reports using GitLab Pages as well.
+This is a simple example (currently, written in Golang) of how we can send a code coverage from GitLab CI/CD to messenger like Slack via webhook, and how to generate detailed Code Coverage reports using GitLab Pages as well.
 
 ## How it works
 - At the Test stage we are running a Go test and saving output to coverage.out file. Go tool cover on this stage is for GitLab CI/CD coverage report
@@ -12,21 +12,30 @@ This is a simple example of how we can send a code coverage from GitLab CI/CD to
 - Go to your repository GitLab Pages (https://your-url.gitlab.io/your-repo/) where you will see your detailed coverage report
 
 ## How it looks
+#### Slack message
+![](examples/gitlab_message.png)
 
+#### GitLab Pages chart
+![](examples/gitlab_pages.jpeg)
 
+#### .HTML report
+![](examples/gitlab_report.png)
+
+## Roadmap
+- [ ] Add example in Python
+- [ ] Add example in Javascript
+- [ ] Add example in Ruby
+- [ ] Add example in PHP
 
 ## Useful links
-
 - [Publish Code Coverage report with GitLab Pages](https://about.gitlab.com/blog/2016/11/03/publish-code-coverage-report-with-gitlab-pages/) blogpost
 - [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/index.html) documentation
 - [GitLab artifacts](https://docs.gitlab.com/ee/ci/yaml/README.html#artifacts) documentation
  
 ## Issues:
-
 Feel free to send pull requests. Also feel free to create issues.
 
 ## License
-
 MIT License
 
 Copyright (c) 2020 Mad Devs
